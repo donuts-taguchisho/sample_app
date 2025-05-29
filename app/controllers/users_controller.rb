@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  def new; end
-
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -11,9 +9,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    return if @user.save
-
-    render 'new', status: :unprocessable_entity
+    if @user.save
+      redirect_to @user
+      flash[:success] = 'Welcome to the Sample App!'
+    else
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   private
