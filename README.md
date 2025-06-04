@@ -1,35 +1,29 @@
-# Ruby on Rails チュートリアルのサンプルアプリケーション
-
-これは、次の教材で作られたサンプルアプリケーションです。
-[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-（第7版）
-[Michael Hartl](https://www.michaelhartl.com/) 著
-
-## ライセンス
-
-[Ruby on Rails チュートリアル](https://railstutorial.jp/)内にある
-ソースコードはMITライセンスとBeerwareライセンスのもとで公開されています。
-詳細は [LICENSE.md](LICENSE.md) をご覧ください。
-
-## 使い方
-
-このアプリケーションを動かす場合は、まずはリポジトリをフォークしてください。
-
-フォークしたリポジトリで、「Code」から「Codespaces」タブに移動し、
-「Create codespace on main」をクリックすると環境構築がスタートします。
-Railsサーバーが立ち上がり、シンプルブラウザが表示されるまでしばらくお待ちください。
-
-次に、データベースへのマイグレーションを実行します。
-
-```
-$ rails db:migrate
-```
-
-最後に、テストを実行してうまく動いているかどうか確認してください。
-
-```
-$ rails test
-```
-
-詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-を参考にしてください。
+1. マイグレーション
+2. ランダムトークン生成
+3. rememberメソッド定義
+4. authenticated?メソッド定義
+5. sessionコントローラにremember追加
+6. ヘルパーにremember定義
+7. current＿userの定義
+8. forgetメソッド定義
+9. ヘルパーにforget定義
+10. ログインテストに二番目のウィンドウでログアウトするテスト追加
+11. sessionコントローラにログインしてる時だけログアウトする
+12. ダイジェストが存在しない場合のテスト追加
+13. ダイジェストが存在しない場合に対応するようにauthenticatedを更新
+14. レイアウトにチェックボックス追加
+    1. ログインフォームにチェックブックス追加
+    2. CSS編集
+    3. createアクションに現在のチェックボックスの値を取得するコード追加
+15. テスト用のログインメソッド追加
+    1. コントローラの単体テスト用のlog_in_as定義
+    2. 統合テスト用のlog_in_as定義
+    3. User_login_testにチェックボックスのテスト追加
+16. createアクションのuserをインスタンス変数に変更
+17. current_user内の分岐処理のテストを書く
+    1. fixtureにuser変数を定義する
+    2. rememberメソッドで記憶する
+    3. current＿userが同じであることを確認する
+18. session_helperテストを書く
+19. Remember_digestをセッショントークンとして再利用するためにrememberメソッドがダイジェストを返すように変更
+20. 
