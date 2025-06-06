@@ -10,7 +10,7 @@ end
 class UserShowTest < UserShow
   test 'should redirect when user not activated' do
     get user_path(@inactive_user)
-    assert_response :see_other
+    assert_response :found
     assert_redirected_to root_url
   end
 
