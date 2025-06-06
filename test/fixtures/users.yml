@@ -36,7 +36,7 @@ user_<%= n %>:
   activated_at: <%= Time.zone.now %>
 <% end %>
 
-inacctive:
+inactive:
   name: Inactive User
   email: inactive@example.com
   password_digest: <%= User.digest('password') %>

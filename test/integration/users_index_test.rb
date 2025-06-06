@@ -16,7 +16,6 @@ class UsersIndexAdmin < UsersIndex
 end
 
 class UsersIndexAdminTest < UsersIndexAdmin
-
   test 'should render the index page' do
     assert_template 'users/index'
   end
@@ -29,9 +28,7 @@ class UsersIndexAdminTest < UsersIndexAdmin
     first_page_of_users = User.where(activated: true).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
-      unless user == @admin
-        assert_select 'a[href=?]', user_path(user), text: 'delete'
-      end
+      assert_select 'a[href=?]', user_path(user), text: 'delete' unless user == @admin
     end
   end
 
@@ -39,8 +36,8 @@ class UsersIndexAdminTest < UsersIndexAdmin
     assert_difference 'User.count', -1 do
       delete user_path(@non_admin)
     end
-      assert_response :see_other
-      assert_redirected_to users_url
+    assert_response :see_other
+    assert_redirected_to users_url
   end
 
   test 'should display only activated users' do
@@ -49,7 +46,7 @@ class UsersIndexAdminTest < UsersIndexAdmin
     # Railsで最初のページに表示される保証がないので不十分
     User.paginate(page: 1).first.toggle!(:activated)
     # /usersを再度取得して、無効化済みのユーザーが表示されていないことを確かめる
-    get users_path      
+    get users_path
     # 表示されているすべてのユーザーが有効化済みであることを確かめる
     assigns(:users).each do |user|
       assert user.activated?
@@ -57,8 +54,7 @@ class UsersIndexAdminTest < UsersIndexAdmin
   end
 end
 
-class usersNonAdminIndexTest < UsersIndex
-
+class UsersNonAdminIndexTest < UsersIndex
   test 'should not have delete links as non-admin' do
     log_in_as(@non_admin)
     get users_path
